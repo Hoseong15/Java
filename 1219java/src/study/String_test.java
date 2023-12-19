@@ -36,6 +36,21 @@ public class String_test {
 		 * */
 		
 		
+		// 1번
+		String[] str = song.split("#");
+		System.out.println(Arrays.toString(str));
+		
+		
+		// 2번
+		String you = song.replaceAll("당신","그대가");
+//		System.out.println(you);
+		
+		// 3번
+		String temp = song.replaceAll("크리스마스", "chrismas");
+		temp = temp.toUpperCase();
+//		System.out.println(temp);
+		
+		
 		
 		
 		
