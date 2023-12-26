@@ -11,7 +11,7 @@ public class java_accsess {
 //		book.title = "c언어";
 		book.cnt = 1; // 클래스변수이기 때문에 객체생성없이 사용가능
 		book bk = new book();
-		bk.title = "c언어"; // 인스턴스변수는 객체 생성 후 사용가능
+//		bk.title = "c언어"; // 인스턴스변수는 객체 생성 후 사용가능
 		bk.cnt = 3; // 클래스의 모든 객체들이 공통으로 클래스변수를 사용할 수 있다.
 		
 		book.init();
@@ -24,7 +24,7 @@ public class java_accsess {
 		System.out.println( Arrays.toString(arr));
 		
 		book bk1 = new book();
-		bk1.title = "html과 css";
+//		bk1.title = "html과 css";
 		
 		tv t1 = new tv();
 		t1.maker = "삼성";
