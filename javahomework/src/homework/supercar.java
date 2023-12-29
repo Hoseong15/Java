@@ -3,12 +3,12 @@ package homework;
 public class supercar extends car {
 	private String 엔진;
 	
-	public supercar(int displacement, int weight, String color, String maker, String transmissionType, String name) {
+	public supercar(int displacement, int weight, String color, String maker, String enginetype, String name) {
 		super(displacement, weight, color, maker, name);
 		this.엔진 = 엔진;
 	}
 	
-	public void setDisplacement(String displacment) {
+	public void setEnginetype(String enginetype) {
 		this.엔진=엔진;
 	}
 	
@@ -24,7 +24,7 @@ public class supercar extends car {
 	}
 
 	public String weight() {
-		return "3000kg";
+		return "200kg";
 	}
 
 	public String getColor() {
@@ -32,10 +32,10 @@ public class supercar extends car {
 	}
 
 	public String getMaker() {
-		return "뭐더라?";
+		return "부가티";
 	}
 
-	public String getTransmissionType() {
+	public String getGengine() {
 		return "부아아아앙";
 	}
 }

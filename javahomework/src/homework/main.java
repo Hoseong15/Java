@@ -39,12 +39,12 @@ public class main {
 		
 		supercar mySupercar = new supercar(3, 4, "c", "f", "y", "l");
 
-		System.out.println("나의SUV:" + mySupercar.name());
+		System.out.println("나의슈퍼카:" + mySupercar.name());
 		System.out.println("배기량: " + mySupercar.displacement());
 		System.out.println("차량무게: " + mySupercar.weight());
 		System.out.println("차량색상: " + mySupercar.getColor());
 		System.out.println("차량브랜드: " + mySupercar.getMaker());
-		System.out.println("엔진선택: " + mySupercar.getTransmissionType());
+		System.out.println("엔진선택: " + mySupercar.getGengine());
 
 		mySupercar.engine();
 	}
