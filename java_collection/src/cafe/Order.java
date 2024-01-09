@@ -93,6 +93,25 @@ public class Order {
 			e.printStackTrace();
 		}
 		
+		// 데이터베이스 데이터저장쿼리 만들어서 전달
+		// insert into 테이블명(컬럼명,컬럼명,컬럼명) values(?,?,?)
+		String sql = "insert into history (customer, menu, price) values(?,?,?)";
+	
+		try {
+			pt = conn.prepareStatement(sql);
+			pt.setString(1,id);
+			pt.setString(2, menu);
+			pt.setInt(3, price);
+			
+			pt.executeUpdate(); // 데이터베이스에 쿼리문 전달
+			System.out.println("데이터 전송 성공");
+		}catch(SQLException e) {
+			System.out.println("데이터 삽입 실패");
+			e.printStackTrace();
+		}
+		
+		
+		
 	}
 	
 	
