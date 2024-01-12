@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
-	import="java.util.ArrayList , java.util.LinkedList" session="false"
+	import="java.util.ArrayList , java.util.LinkedList" session="true"
 	errorPage="error.jsp" isErrorPage="false" isThreadSafe="true"
 	buffer="16kb" autoFlush="true"%>
 
 <%--@ page import="" --%>
+
 
 
 <%!// 선언부 - 메서드 정의
@@ -44,6 +45,14 @@ String[] names = { "이순신", "김유신", "장보고", "문익점", "최무�
 
 --%>
 
+<%
+	String user = null;
+	if(session.getAttribute("user") != null){
+		user = (String)session.getAttribute("user");
+		
+	}
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,16 +73,19 @@ String[] names = { "이순신", "김유신", "장보고", "문익점", "최무�
 		</ul>
 	</div>
 
+<% if(user != null) { %>
 	<form method="get" action="test.jsp">
-		<input type='text' name='name' placeholder="이름"><br> <input
-			type='text' name='age' placeholder="나이"><br> <input
-			type='text' name='tel' placeholder="연락처"><br> <input
-			type="checkbox" name='interest' value='게임'>게임 <input
-			type='checkbox' name='interest' value='영화'>영화 <input
-			type='checkbox' name='interest' value='car'>자동차
+		<input type='text' name='name' placeholder="이름"><br> 
+		<input type='text' name='age' placeholder="나이"><br> 
+		<input type='text' name='tel' placeholder="연락처"><br> 
+		
+		<input type="checkbox" name='interest' value='게임'>게임 
+		<input type='checkbox' name='interest' value='영화'>영화 
+		<input type='checkbox' name='interest' value='car'>자동차
 
 		<button>전송</button>
 	</form>
+<%} %>
 
 
 
