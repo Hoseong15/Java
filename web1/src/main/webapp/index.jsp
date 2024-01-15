@@ -49,7 +49,6 @@ String[] names = { "이순신", "김유신", "장보고", "문익점", "최무�
 	String user = null;
 	if(session.getAttribute("user") != null){
 		user = (String)session.getAttribute("user");
-		
 	}
 %>
 
@@ -60,7 +59,7 @@ String[] names = { "이순신", "김유신", "장보고", "문익점", "최무�
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="menu.jsp"%>
+	<% pageContext.include("menu.jsp?user="+user);%>
 	<div id="wrap">
 		<ul>
 			<%
