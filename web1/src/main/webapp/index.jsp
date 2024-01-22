@@ -5,6 +5,7 @@
 	buffer="16kb" autoFlush="true"%>
 
 <%--@ page import="" --%>
+<%@ page import="entity.member" %>
 
 
 
@@ -46,10 +47,19 @@ String[] names = { "이순신", "김유신", "장보고", "문익점", "최무�
 --%>
 
 <%
-	String user = null;
+	member user = null;
+
 	if(session.getAttribute("user") != null){
-		user = (String)session.getAttribute("user");
+		user = (member)session.getAttribute("user");
+	} // 로그인 성공시 user변수는 값을 가지고, 로그인 하지 않은 상태에서는 user변수는 null을 가진다
+	
+	String part = null; // index.jsp에 part 파라미터 값이 들어오면 part파라미터 값을 가지게되고 part파라미터가 없다면
+	// null값을 가진다. part 파라미터는 페이지 이동시에만 값을 가진다.
+	if(request.getParameter("part") != null) {
+		part = request.getParameter("part");
 	}
+	
+	
 %>
 
 <!DOCTYPE html>
@@ -57,9 +67,17 @@ String[] names = { "이순신", "김유신", "장보고", "문익점", "최무�
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+ <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="crossorigin="anonymous"></script>
+
+<% if(part != null) {%>
+	<link rel="stylesheet" href="./static/css/<%=part%>.css">
+	<script src="./static/js/<%=part%>.js"></script>
+<%} %>
 </head>
 <body>
 	<% pageContext.include("menu.jsp?user="+user);%>
+	
+<%  if(part == null) { %>
 	<div id="wrap">
 		<ul>
 			<%
@@ -73,6 +91,8 @@ String[] names = { "이순신", "김유신", "장보고", "문익점", "최무�
 	</div>
 
 <% if(user != null) { %>
+
+<%=user.getId() %>
 	<form method="get" action="test.jsp">
 		<input type='text' name='name' placeholder="이름"><br> 
 		<input type='text' name='age' placeholder="나이"><br> 
@@ -84,9 +104,12 @@ String[] names = { "이순신", "김유신", "장보고", "문익점", "최무�
 
 		<button>전송</button>
 	</form>
-<%} %>
-
-
+<%} 
+} else if(part != null) {
+	pageContext.include(part + ".jsp");
+	// <%@ include % >
+}
+%>
 
 
 </body>
