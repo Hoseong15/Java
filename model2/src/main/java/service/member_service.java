@@ -25,7 +25,7 @@ public class member_service {
 		
 		mdao.insert(new member(email,pw,name,tel) );
 		
-		response.sendRedirect("/members?cmd=signIn");
+		response.sendRedirect("/members/signIn");
 		
 		return null;
 	}

@@ -15,7 +15,7 @@ import service.member_service;
 /**
  * Servlet implementation class member_control
  */
-@WebServlet("/members")
+@WebServlet("/member_control")
 public class member_control extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private member_service ms = new member_service();
@@ -58,9 +58,11 @@ public class member_control extends HttpServlet {
 		// 서버 대신해서 요청을 처리해주는 역할을 한다.
 		request.setCharacterEncoding("UTF-8");
 		
+		String uri = request.getRequestURI();
+		String path = request.getContextPath();
 		
 		
-		String cmd = request.getParameter("cmd"); // 요청 주소의 cmd 파라미터 값 가져오기
+		String cmd = uri.substring(9); // 요청 주소의 cmd 파라미터 값 가져오기
 		String view = "/"; // 사용자에게 제공 할 기본 페이지
 		
 		if(cmd.equals("signup")) { // 요청 파라미터가 signup일경우 회원가입페이지 요청한거
