@@ -5,6 +5,8 @@
 
 <div id="signup_wrap">
 	<form id="signupFm" method="POST" action="/members/signSave">
+	<input type="hidden" name="cmd" value="dao">
+	
 		<div class="myphoto">
 			<div class="photo"></div>
 			<input type="file" name="face" id="face">
