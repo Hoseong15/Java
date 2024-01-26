@@ -7,8 +7,17 @@ public class member {
 	private String password;
 	private String name;
 	private String tel;
+	private String image;
 	
 	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public member(String email, String password, String name, String tel) {
 		this.email = email;
 		this.password = password;
