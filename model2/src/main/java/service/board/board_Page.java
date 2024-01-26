@@ -9,8 +9,21 @@ public class board_Page implements board_action {
 
 	@Override
 	public String action(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		// 로그인 안했을때 주소 입력하여 강제 진입시
+		if(request.getSession().getAttribute("user") == null) {
+			
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html; charset=UTF-8");
+			response.getWriter().append(""
+					+ "<script> alert('로그인후 이용하세요'); history.back(); </script>");
+			return null;
+		}
+		
+		// 정상적으로 로그인 절차 진행하여 진입했을때
+		request.setAttribute("prt", "board/write");
+		
+		return "/";
 	}
 
 }
