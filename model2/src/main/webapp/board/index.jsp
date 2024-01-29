@@ -66,8 +66,13 @@
 						<c:forEach var="res" items="${list }">
 								<tr>
 									<td class="num numtd">${res.id }</td>
-									<td class="title titletd">${res.title }</td>
-									<td class="date datetd">${res.wdate }</td>
+									<td class="title titletd">
+										<a href="/board_read.do?id=${res.id }">${res.title }</a>
+									</td>
+									<td class="date datetd">
+										<fmt:formatDate value="${res.wdate }" pattern="yy.MM.dd HH:mm"/>
+										<%-- <fmt:formatNumber value="89" pattern="###,###점"></fmt:formatNumber> --%>
+									</td>
 									<td class="writer writertd">${res.writer }</td>
 									<td class="hit hittd">${res.hit }</td>
 								</tr>
