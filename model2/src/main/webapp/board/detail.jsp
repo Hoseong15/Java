@@ -35,7 +35,7 @@
 	<c:if test="${user.num == data.member_id }">
 		<div class="update_del">
 			<button type="button" onclick="update('${data.id}')">수정</button>
-			<button type="button" onclick="del('${data.id}')">삭제</button>
+			<button type="button" onclick="del('${data.id }')">삭제</button>
 		</div>
 	</c:if>
 	
@@ -52,9 +52,9 @@
 	}
 	
 	function del(i){
-		var really = confirm("정말로 삭제 하시겠습니까?");
-		if(really){}
-			location.href="/board_delete.di?id="+i;
+		var really = confirm("정말로 삭제 하시겠습니까? ");
+		if( really){
+			location.href="/board_delete.do?id="+i;
 		}
 	}
 	
