@@ -56,25 +56,59 @@
 			</thead>
 			
 			<tbody>
-			
-				<tr>
-					<td class="noneWrite" colspan="5"> 등록된 글이 없습니다.</td>
-				</tr>
+				<c:choose>
+					<c:when test="${list == null }"> 
+						<tr>
+							<td class="noneWrite" colspan="5"> 등록된 글이 없습니다.</td>
+						</tr>
+					</c:when>
+					<c:when test="${list != null }">	
+						<c:forEach var="res" items="${list }">
+								<tr>
+									<td class="num numtd">${res.id }</td>
+									<td class="title titletd">${res.title }</td>
+									<td class="date datetd">${res.wdate }</td>
+									<td class="writer writertd">${res.writer }</td>
+									<td class="hit hittd">${res.hit }</td>
+								</tr>
+						</c:forEach>		
+					</c:when>	
+				</c:choose>
 				
-				<tr>
-					<td class="num numtd"></td>
-					<td class="title titletd"></td>
-					<td class="date datetd"></td>
-					<td class="writer writertd"></td>
-					<td class="hit hittd"></td>
-				</tr>
 			</tbody>
 			
+<%--게시글 페이징 --%>			
+<c:set var="pageTotalNum" value="${ DBtotal/10 }"/>
+<c:if test="${DBtotal%10 != 0}">
+	<c:set var="pageTotalNum" value="${pageTotalNum + 1 }"/>
+</c:if>
+
+<c:set var="pageNum" value="1"/> <!-- 현재 페이지 번호 -->
+<c:if test="${param.page != null }">
+	<c:set var="pageNum" value="${param.page }"/>
+</c:if>
+
+<c:set var="skip" value="5"/>
+<c:set var="start" value="1"/>
+<c:set var="end" value="${pageTotalNum > skip ? 5 : pageTotalNum}"/>
+<c:if test="${pageTotalNum > skip && pageNum >= (skip/2+1) }">
+	<c:set var="start" value="${pageNum-2 }"/>
+	<c:set var="end" value="${pageTotalNum > pageNum+2 ? pageNum+2 : pageTotalNum }"/>
+</c:if>
+
 			<tfoot>
 				<tr>
 					<td colspan="5">
 						<i class="bi bi-arrow-left-circle"></i>
 						
+						<c:forEach var="i" begin="${start }" end="${end }" step="1"> 
+							<c:if test="${pageNum == i }"> <!-- 현재 페이지 표시 -->
+								[${i }]
+							</c:if>
+							<c:if test="${pageNum !=i }"> <!-- 다른페이지번호 표시 -->
+								<a href="/board.do?page=${i }">${i }</a>
+							</c:if>
+						</c:forEach>
 						
 						<i class="bi bi-arrow-right-circle"></i>
 					</td>

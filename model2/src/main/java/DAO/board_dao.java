@@ -12,24 +12,44 @@ public class board_dao extends parent_dao {
 		createTable();
 	}
 	
+	// board테이블에 저장된 글의 갯수
+	public int DbCount() {
+		String sql ="select count(id) as cnt from board";
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			if(rs.next()) {
+				return rs.getInt("cnt");
+			}
+		}catch(SQLException e) {
+			System.out.println("board 총 갯수 구하기 실패");
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
 	// board테이블 전체 불러오기
-	public List<board> Allselect(){
+	public List<board> Allselect(int row){
 		List<board> list = new ArrayList<>();
 		
-		String sql = "select * from board order by wdate";
+		String sql = "select * from board order by wdate desc limit ? , 10";
 		try {
-			st=conn.prepareStatement(sql);
-			rs=pt.executeQuery();
+//			st=conn.createStatement();
+//			rs=st.executeQuery(sql);
+			pt = conn.prepareStatement(sql);
+			pt.setInt(1, row);
+			rs = pt.executeQuery();
 			while(rs.next()) {
 				board data = new board(rs.getInt(1),rs.getInt(7),rs.getInt(9), rs.getString(2),
 						rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(8),rs.getTimestamp(6));
 				list.add(data);
 			}
+			if(!list.isEmpty()) 
 			return list;
 		}catch(SQLException e) {
 			System.out.println("board페이지 불러오기 실패");
 			e.printStackTrace();
-		}
+		}		
 		return null;
 	}
 	
