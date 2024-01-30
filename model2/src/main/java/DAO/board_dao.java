@@ -76,6 +76,12 @@ public class board_dao extends parent_dao {
 			pt = conn.prepareStatement(sql);
 			pt.setInt(1, id);
 			pt.executeUpdate();
+			
+			sql="delete from reply where board_id=?";
+			pt = conn.prepareStatement(sql);
+			pt.setInt(1, id);
+			pt.executeUpdate();
+			
 		}catch(SQLException e) {
 			System.out.println("글 삭제 실패");
 			e.printStackTrace();
