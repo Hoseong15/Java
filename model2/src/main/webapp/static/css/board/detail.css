@@ -36,6 +36,41 @@
 .update_del button:nth-child(1){background:#3498db;}
 .update_del button:nth-child(2){background:#e74c3c;}
 
+#reply_wrap{
+	width:1000px;
+	margin:0 auto;
+}
+.reply_input{
+	display:flex;
+	flex-direction:column;
+	width:100%;
+}
+.input_box{
+	display:flex;
+}
+#comment{
+	width:1000px;
+	height:100px;
+}
+
+.del_bt{
+	margin:0 auto;
+	width:100px;
+	border:0;
+	border-radius:10px;
+	background:#3498db;
+	text-align:center;
+	margin-top:30px;
+}
+.reply_comment{
+	width:1000px;
+	height:50px;
+	border-bottom:1px solid black;
+}
+.reply_info{
+	display:flex;
+	justify-content:space-between;
+}
 
 
 

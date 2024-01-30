@@ -2,6 +2,7 @@ package service.board;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.board_dao;
 import DTO.board;
+import DTO.reply;
 
 public class board_read implements board_action {
 
@@ -32,6 +34,7 @@ public class board_read implements board_action {
 		}
 		
 		board view = dao.selectDetail(num);
+		List<reply> reply_list = dao.findReply(num);
 		
 		if(isCook) {
 			dao.hitIncrease(num);
@@ -53,6 +56,7 @@ public class board_read implements board_action {
 						
 		request.setAttribute("data", view);
 		request.setAttribute("prt", "board/detail");
+		request.setAttribute("reply_list", reply_list);
 		
 		return "/";
 	}
