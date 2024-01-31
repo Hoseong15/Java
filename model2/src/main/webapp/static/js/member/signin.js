@@ -1,6 +1,14 @@
 /**
  * 
  */
+
+
+$(function(){
+	var preUrl = document.referrer;
+	$("#cmd").val(preUrl);
+	
+});
+
  
  
  function login() {
