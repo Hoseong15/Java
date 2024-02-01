@@ -3,10 +3,9 @@
  */
 
 
-$(function(){
+ $(function(){
 	var preUrl = document.referrer;
 	$("#cmd").val(preUrl);
-	
 });
 
  

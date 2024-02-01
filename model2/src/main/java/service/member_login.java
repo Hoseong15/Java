@@ -36,6 +36,8 @@ public class member_login implements member_action {
 				dao.getPicture(user); // 이미지 불러오기
 				request.getSession().setAttribute("user", user);
 			}
+			if(preUrl.indexOf("/membes") >= 0 || preUrl.indexOf("http://localhost:8080") == -1 ) 
+				preUrl = "/";
 			response.sendRedirect(preUrl);
 			return null;
 		}
